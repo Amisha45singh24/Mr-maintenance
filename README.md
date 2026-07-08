@@ -58,7 +58,7 @@ php artisan serve
 - **Admin Dashboard:** `http://localhost:8000/admin/dashboard`
 
 ### Admin Login Credentials
-- **Email:** `abhaypandey9425@gmail.com`
+- **Email:** `singhamishasingh21@gmail.com`
 - **Password:** `password`
 
 ## Key Features Built
