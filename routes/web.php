@@ -43,15 +43,23 @@ Route::post('/review', [ReviewController::class, 'store'])->name('review.store')
 | Auth Routes (Breeze)
 |--------------------------------------------------------------------------
 */
-// require __DIR__.'/auth.php';
-
-// Fallback for Breeze's default redirects
-// Route::redirect('/dashboard', '/admin/dashboard')->name('dashboard');
+require __DIR__.'/auth.php';
 
 /*
 |--------------------------------------------------------------------------
 | Admin Routes (Protected)
 |--------------------------------------------------------------------------
 */
-// Admin features have been removed as per request.
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    
+    // Bookings
+    Route::resource('bookings', AdminBookingController::class);
+    
+    // Services
+    Route::resource('services', AdminServiceController::class);
+    
+    // Messages
+    Route::resource('messages', AdminMessageController::class)->only(['index', 'show', 'destroy']);
+});
 
